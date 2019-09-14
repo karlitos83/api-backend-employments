@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  entry_at: 2019-09-13 12:35:53
+  departure_at: 2019-09-13 12:35:53
+
+two:
+  user: two
+  entry_at: 2019-09-13 12:35:53
+  departure_at: 2019-09-13 12:35:53
