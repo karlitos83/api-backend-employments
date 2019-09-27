@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  #before_action :authenticate_user
-  #before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authenticate_user
+  before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
@@ -13,8 +13,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-      @user = User.select("users.id, name, email, entry_at, departure_at")
-      .joins(:work_days).where(params[:id])
+      @user
+
       render json: @user
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if current_user.admin?
-      @user = User.find params[:id]
+        @user
       if @user.update(user_params)
         render json: @user
       else
@@ -46,8 +46,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     if current_user.admin?
-      User.destroy(params[:id])
-      #@user.destroy
+      @user.destroy
+
+      render json: @user
     end
   end
 

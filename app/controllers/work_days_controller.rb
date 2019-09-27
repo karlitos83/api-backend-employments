@@ -1,6 +1,6 @@
 class WorkDaysController < ApplicationController
   before_action :authenticate_user
-  #before_action :set_work_day, only: [:show, :update, :destroy]
+  before_action :set_work_day, only: [:show, :update, :destroy]
 
   # GET /work_days
   def index
@@ -13,7 +13,8 @@ class WorkDaysController < ApplicationController
 
   # GET /work_days/1
   def show
-    @work_day = WorkDay.select("id, user_id, entry_at, departure_at").where(params[:id])
+    @work_day
+
     render json: @work_day
   end
 
@@ -33,7 +34,7 @@ class WorkDaysController < ApplicationController
   # PATCH/PUT /work_days/1
   def update
     if current_user.admin?
-      @work_day = WorkDay.find params[:id]
+      @work_day
       if @work_day.update(work_day_params)
         render json: @work_day
       else
@@ -45,8 +46,9 @@ class WorkDaysController < ApplicationController
   # DELETE /work_days/1
   def destroy
     if current_user.admin?
-      WorkDay.destroy(params[:id])
-      #@work_day.destroy
+      @work_day.destroy
+
+      render json: @work_day
     end
   end
 
